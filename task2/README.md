@@ -1,29 +1,14 @@
-FROM:
-     take latest version of ubuntu
+back-end:
+          copy of your task1 directory and name it task2.
+front-end:
+          - clone this repository -> https://github.com/atlas-school/softy-pinko-front-end
+          -Dockerfile: + the latest version of nginx.
+          -softy-pinko-front-end.conf: 
+                    +server{}: open setting of server:
+                         *listen 9000; : localhost:9000
+                         *server_name localhost; : name of server
+                         *location / {}: - use this for URL
+                                         -root /var/www/html/softy-pinko-front-end;: path of directory
+                                         - index index.html; : this page in localhost:9000
 
-apt-get update:
-              download the latest information
-
-apt-get upgrade -y:
-                   accept all latest of information
-                   -y: that mean yes
-
-RUN apt-get install -y python3 python3-pip:
-                    install python3 and python3-pip
-
-RUN rm /usr/lib/python*/EXTERNALLY-MANAGED:
-                                        Dont show me message error like latest version of pip3
-                                        for that we need to write before pip3 install flask
-
-RUN pip3 install flask: 
-                         install flask
-
-WORKDIR /app:
-             /app directory of work
-
-COPY ./api.py /app/api.py:
-                         copy file api.py to /app/api.py in container
-
-CMD [ "python3", "api.py" ]:
-                           method for runnig app flask
-
+==> after run we have one problem it is "favicon.ico" dont found in path 
