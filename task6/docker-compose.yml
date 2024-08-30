@@ -1,0 +1,36 @@
+services:
+  front-end:
+    build: ./front-end
+    ports:
+      - "9000:80"
+    networks:
+      - task6-network
+
+  back-end-1:
+    build: ./back-end
+    ports:
+      - "5252:5252"
+    networks:
+      - task6-network
+
+  back-end-2:
+    build: ./back-end
+    ports:
+      - "5253:5253"
+    networks:
+      - task6-network
+
+  proxy:
+    build: ./proxy
+    ports:
+      - "80:80"
+    networks:
+      - task6-network
+    depends_on:
+      - front-end
+      - back-end-1
+      - back-end-2
+
+networks:
+  task6-network:
+    driver: bridge
